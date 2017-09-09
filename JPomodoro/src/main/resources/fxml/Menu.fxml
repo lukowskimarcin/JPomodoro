@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+
+<MenuBar xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.MenuControler">
+  <menus>
+    <Menu mnemonicParsing="false" text="%mFile">
+      <items>
+            <MenuItem fx:id="mSettings" mnemonicParsing="false" onAction="#onSettings" text="%mSettings" />
+            
+        <MenuItem fx:id="mClose" mnemonicParsing="false" onAction="#closeAction" text="%mClose">
+               <accelerator>
+                  <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator></MenuItem>
+      </items>
+    </Menu>
+    <Menu mnemonicParsing="false" text="%mAbout">
+      <items>
+        <MenuItem fx:id="mAbout" mnemonicParsing="false" onAction="#onAbout" text="About" />
+      </items>
+    </Menu>
+  </menus>
+</MenuBar>

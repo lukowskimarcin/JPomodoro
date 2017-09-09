@@ -1,0 +1,42 @@
+-> icona w tray
+-> powiadomienia kiedy przerwa, kiedy nowe zadanie
+-> zolta karteczka ?
+-> ustawienia jako xml osobna klasa modelowa
+	-> cykl i jego kolejnosc
+	
+	
+<schedule cycle="true">
+
+<work time="50"/>
+<break time="10"/>
+<work time="50"/>
+<break time="30" />
+
+</schedule>
+
+
+
+==================================================================
+1)
+
+Uruchamiam aplikacje. Po wybraniu z menu "start" rusza timer. Gdy konczy się 
+czas pojawia się powiadomienie. Powiadomienie ma swoj czas wyswietlania.
+Gdy kończy się czas przerwy, to automatycznie nie rusza następne zadanie.
+Przerwa natomiast startuje od razu po minieciu czasu na zadanie.
+
+
+2)
+Ikona w tray pokazuje graficznie czas jaki pozostal nad przerwe/zadanie.
+Inny kolor dla zadania, inny kolor dla przerwy
+
+
+3)
+Autostart aplikacji w systemie
+
+
+4)
+Wyłączanie neta z poziomu pomodoro
+https://stackoverflow.com/questions/4893129/disable-network-connection
+https://sourceforge.net/projects/jacob-project/  
+
+- blokowanie okreslonych stron
