@@ -16,6 +16,9 @@ public class MenuControler extends AbstractView {
 
 	@Autowired
 	private App app;
+	
+	@Autowired
+	private MainControler main;
 
 	@Autowired
 	private AboutControler aboutView;
@@ -36,9 +39,7 @@ public class MenuControler extends AbstractView {
 
 	@FXML
 	void onSettings(ActionEvent event) {
-		settingsView.setTitle(bundle.getString("mSettings"));
-		settingsView.initOwner(app.getStage()).initModality(Modality.WINDOW_MODAL).center().showAndWait();
-
+		main.setCenter(settingsView);
 	}
 
 }
