@@ -17,15 +17,6 @@ public class MenuControler extends AbstractView {
 	@Autowired
 	private App app;
 
-	@FXML
-	private MenuItem mClose;
-
-	@FXML
-	private MenuItem mAbout;
-
-	@FXML
-	private MenuItem mSettings;
-
 	@Autowired
 	private AboutControler aboutView;
 
