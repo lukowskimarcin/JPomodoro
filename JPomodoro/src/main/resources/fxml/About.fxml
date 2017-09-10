@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="180.0" prefHeight="188.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.AboutControler">
+<AnchorPane minHeight="180.0" prefHeight="188.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.AboutBean">
    <children>
       
       <Button fx:id="bOk" layoutX="288.0" layoutY="140.0" mnemonicParsing="false" onAction="#onAction" prefHeight="25.0" prefWidth="108.0" text="Ok" AnchorPane.bottomAnchor="23.0" AnchorPane.rightAnchor="14.0" />

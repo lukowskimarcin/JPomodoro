@@ -2,10 +2,12 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="180.0" prefHeight="188.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.SettingsControler">
-   
+<AnchorPane minHeight="180.0" prefHeight="188.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.SettingsBean">
+   <children>
+      <Label layoutX="40.0" layoutY="28.0" text="Ustawienia" />
+      <Button fx:id="bPlay" layoutX="43.0" layoutY="94.0" mnemonicParsing="false" onAction="#onPlay" text="Play" />
+      <Button fx:id="bSave" layoutX="136.0" layoutY="94.0" mnemonicParsing="false" onAction="#onSave" text="%btnSave" />
+   </children>
 </AnchorPane>

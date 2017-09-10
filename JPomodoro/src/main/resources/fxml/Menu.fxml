@@ -5,10 +5,11 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.input.KeyCodeCombination?>
 
-<MenuBar xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.MenuControler">
+<MenuBar xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.MenuBean">
   <menus>
     <Menu mnemonicParsing="false" text="%mFile">
       <items>
+            <MenuItem fx:id="mTaskList" mnemonicParsing="false" onAction="#onTaskList" text="%mTaskList" />
             <MenuItem fx:id="mSettings" mnemonicParsing="false" onAction="#onSettings" text="%mSettings" />
             
         <MenuItem fx:id="mClose" mnemonicParsing="false" onAction="#closeAction" text="%mClose">

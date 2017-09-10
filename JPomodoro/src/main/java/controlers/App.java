@@ -26,7 +26,7 @@ public class App extends AbstractJavaFxApplication {
 		loadIcons();
 		addDefaultCSS("/css/app.css");
 		setStartInTray(false);
-		launchApp(App.class, MainControler.class, args);
+		launchApp(App.class, MainBean.class, args);
 	}
 	 
 	private static void loadIcons() {
