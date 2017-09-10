@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import fxbase.AbstractView;
 import fxbase.FXMLView;
+import javafx.application.Platform;
 import javafx.scene.layout.BorderPane;
 import model.Settings;
 import services.SettingsService;
@@ -27,7 +28,7 @@ public class MainBean extends AbstractView {
 		setTitle(bundle.getString("title"));
 		BorderPane pane = (BorderPane) getView();
 		pane.setTop(menu.getView());
-
+			 
 		try {
 			settings = settingsService.load();
 			System.out.println(settings);

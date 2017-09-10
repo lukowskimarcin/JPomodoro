@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <settings>
-   <pomodoroLength>25</pomodoroLength>
-   <shortBreakLength>5</shortBreakLength>
-   <longBreakLength>15</longBreakLength>
-   <sound>false</sound>
-   <alarm>TempleBellBigger.mp3</alarm>
-   <alarms class="java.util.ArrayList">
-      <file>Buzzer.mp3</file>
-      <file>LoudAlarmClockBuzzer.mp3</file>
-      <file>TempleBellBigger.mp3</file>
-   </alarms>
+    <alarm>Buzzer.mp3</alarm>
+    <longBreakLength>15</longBreakLength>
+    <pomodoroLength>25</pomodoroLength>
+    <shortBreakLength>5</shortBreakLength>
+    <sound>true</sound>
+    <sounds>
+        <sound>Buzzer.mp3</sound>
+        <sound>LoudAlarmClockBuzzer.mp3</sound>
+        <sound>TempleBellBigger.mp3</sound>
+    </sounds>
 </settings>

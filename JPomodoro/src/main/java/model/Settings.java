@@ -3,11 +3,21 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
-import org.simpleframework.xml.Root;
+
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Ustawienia aplikacji
@@ -16,82 +26,131 @@ import org.simpleframework.xml.Root;
  *
  */
 
-@Root
-public class Settings {
+@XmlRootElement(name = "settings")
+public class Settings implements Cloneable {
 
-	@Element
-	private int pomodoroLength;
-	
-	@Element
-	private int shortBreakLength;
+	private final IntegerProperty pomodoroLength = new SimpleIntegerProperty();
 
-	@Element
-	private int longBreakLength;
-	
-	@Element
-	private boolean sound;
-	
-	@Element
-	private String alarm;
-	
-	@ElementList(entry="file")
-	private List<String> alarms = new ArrayList<String>();
+	private final IntegerProperty shortBreakLength = new SimpleIntegerProperty();
 
-	public int getPomodoroLength() {
+	private final IntegerProperty longBreakLength = new SimpleIntegerProperty();
+
+	private final BooleanProperty sound = new SimpleBooleanProperty();
+
+	private final StringProperty alarm = new SimpleStringProperty();
+
+	private final ObservableList<String> sounds = FXCollections.observableList(new ArrayList<String>());
+
+	public IntegerProperty pomodoroLengthProperty() {
 		return pomodoroLength;
 	}
 
-	public void setPomodoroLength(int pomodoroLength) {
-		this.pomodoroLength = pomodoroLength;
+	public Integer getPomodoroLength() {
+		return pomodoroLength.get();
 	}
 
-	public int getShortBreakLength() {
+	public void setPomodoroLength(Integer pomodoroLength) {
+		this.pomodoroLength.set(pomodoroLength);
+	}
+
+	public IntegerProperty shortBreakLengthProperty() {
 		return shortBreakLength;
 	}
 
-	public void setShortBreakLength(int shortBreakLength) {
-		this.shortBreakLength = shortBreakLength;
+	public Integer getShortBreakLength() {
+		return shortBreakLength.get();
 	}
 
-	public int getLongBreakLength() {
+	public void setShortBreakLength(Integer shortBreakLength) {
+		this.shortBreakLength.set(shortBreakLength);
+	}
+
+	public IntegerProperty longBreakLengthProperty() {
 		return longBreakLength;
 	}
 
-	public void setLongBreakLength(int longBreakLength) {
-		this.longBreakLength = longBreakLength;
+	public Integer getLongBreakLength() {
+		return longBreakLength.get();
 	}
 
-	public boolean isSound() {
-		return sound;
+	public void setLongBreakLength(Integer longBreakLength) {
+		this.longBreakLength.set(longBreakLength);
 	}
 
-	public void setSound(boolean sound) {
-		this.sound = sound;
+	public IntegerProperty soundProperty() {
+		return longBreakLength;
 	}
 
-	public String getAlarm() {
+	public Boolean getSound() {
+		return sound.get();
+	}
+
+	public void setSound(Boolean sound) {
+		this.sound.set(sound);
+	}
+
+	public StringProperty alarmProperty() {
 		return alarm;
 	}
 
+	public String getAlarm() {
+		return alarm.get();
+	}
+
 	public void setAlarm(String alarm) {
-		this.alarm = alarm;
+		this.alarm.set(alarm);
 	}
 
-	public List<String> getAlarms() {
-		return alarms;
+	public StringProperty alarmsProperty() {
+		return alarm;
 	}
 
-	public void setAlarms(List<String> alarms) {
-		this.alarms = alarms;
+	@XmlElementWrapper(name = "sounds")
+	@XmlElement(name = "sound", type = String.class)
+	public ObservableList<String> getSounds() {
+		return sounds;
 	}
-	
-	
-	public String getAlarmPath(){
-		String musicFile = 	this.getClass().getResource("/sounds/" + alarm).toExternalForm();
+
+	public void setSounds(List<String> list) {
+		sounds.clear();
+		sounds.addAll(list);
+	}
+
+	public String getAlarmPath() {
+		String musicFile = this.getClass().getResource("/sounds/" +    alarm.get()  ).toExternalForm();
 		return musicFile;
 	}
-	
-	 public String toString() {
-		    return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-		 }
+
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+	}
+
+	@Override
+	public Settings clone() throws CloneNotSupportedException {
+		Settings copy = new Settings();
+
+		if (getAlarm() != null) {
+			copy.setAlarm(getAlarm());
+		}
+
+		List<String> copyList = new ArrayList<>();
+		for (String s : getSounds()) {
+			copyList.add(s);
+		}
+		copy.setSounds(copyList);
+
+		if (getLongBreakLength() != null) {
+			copy.setLongBreakLength(getLongBreakLength());
+		}
+
+		if (getShortBreakLength() != null) {
+			copy.setShortBreakLength(getShortBreakLength());
+		}
+
+		if (getSound() != null) {
+			copy.setSound(getSound());
+		}
+
+		return copy;
+	}
 }

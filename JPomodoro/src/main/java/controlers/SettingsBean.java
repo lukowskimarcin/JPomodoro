@@ -1,6 +1,5 @@
 package controlers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
@@ -39,6 +38,20 @@ public class SettingsBean extends AbstractModelView<Settings>{
     @FXML
     void onSave(ActionEvent event) {
     	try {
+//    		Settings s = new Settings();
+//    		s.setPomodoroLength(25);
+//    		s.setLongBreakLength(15);
+//    		s.setShortBreakLength(5);
+//    		
+//    		s.setAlarm("Buzzer.mp3");
+//    		
+//    		List<String> sounds = new ArrayList<>();
+//    		sounds.add("Buzzer.mp3");
+//    		sounds.add("LoudAlarmClockBuzzer.mp3");
+//    		sounds.add("TempleBellBigger.mp3");
+//    		s.setSounds(sounds);
+//    		
+    		
     		settingsService.save(getData());
     	}catch (Exception ex) {
 			DialogsUtil.create().showException(ex);

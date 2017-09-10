@@ -2,8 +2,10 @@ package services;
 
 import java.io.File;
 
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
 import org.springframework.stereotype.Service;
 
 import model.Settings;
@@ -12,17 +14,20 @@ import model.Settings;
 public class SettingsService {
 
 	public Settings load() throws Exception {
-		Serializer serializer = new Persister();
-		File source = new File("settings.xml");
-
-		Settings settings = serializer.read(Settings.class, source);
+		File file = new File("settings.xml");
+		JAXBContext context = JAXBContext.newInstance(Settings.class);
+		Unmarshaller um = context.createUnmarshaller();
+		Settings settings = (Settings)um.unmarshal(file);
+		
 		return settings;
 	}
 
 	public void save(Settings settings) throws Exception {
-		Serializer serializer = new Persister();
 		File result = new File("settings.xml");
-		serializer.write(settings, result);
+		JAXBContext context = JAXBContext.newInstance(Settings.class);
+        Marshaller m = context.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        m.marshal(settings, result);
 	}
 
 }
