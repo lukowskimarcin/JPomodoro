@@ -31,8 +31,7 @@ public class SettingsBean extends AbstractModelView<Settings>{
 
     @FXML
     void onPlay(ActionEvent event) {
-    	String musicFile = 	this.getClass().getResource("/sounds/Buzzer.mp3").toExternalForm();
-    	Media sound = new Media(musicFile);
+    	Media sound = new Media(getData().getAlarmPath());
     	MediaPlayer mediaPlayer = new MediaPlayer(sound);
     	mediaPlayer.play();
     }

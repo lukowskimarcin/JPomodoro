@@ -86,6 +86,11 @@ public class Settings {
 	}
 	
 	
+	public String getAlarmPath(){
+		String musicFile = 	this.getClass().getResource("/sounds/" + alarm).toExternalForm();
+		return musicFile;
+	}
+	
 	 public String toString() {
 		    return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
 		 }
