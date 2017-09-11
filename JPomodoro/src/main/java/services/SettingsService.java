@@ -8,7 +8,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.springframework.stereotype.Service;
 
-import model.Settings;
+import models.Settings;
 
 @Service
 public class SettingsService {

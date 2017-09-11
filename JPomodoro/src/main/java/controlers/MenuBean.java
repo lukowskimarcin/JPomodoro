@@ -10,7 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
-import model.Settings;
+import models.Settings;
 import services.SettingsService;
 import utils.DialogsUtil;
 

@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import model.Settings;
+import models.Settings;
 import services.SettingsService;
 import utils.DialogsUtil; 
 
@@ -27,6 +27,15 @@ public class SettingsBean extends AbstractModelView<Settings>{
 	@Autowired
 	private SettingsService settingsService;
 	 
+	
+	@Override
+	public void bindToView(Settings settings) {
+	}
+	
+	@Override
+	public void unBindToView() {
+	}
+	
 
     @FXML
     void onPlay(ActionEvent event) {

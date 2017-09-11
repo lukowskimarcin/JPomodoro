@@ -1,4 +1,4 @@
-package model;
+package models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import fxbase.Dto;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -27,7 +28,8 @@ import javafx.collections.ObservableList;
  */
 
 @XmlRootElement(name = "settings")
-public class Settings implements Cloneable {
+public class Settings extends Dto {
+	private static final long serialVersionUID = -9131733979141926279L;
 
 	private final IntegerProperty pomodoroLength = new SimpleIntegerProperty();
 
@@ -153,4 +155,5 @@ public class Settings implements Cloneable {
 
 		return copy;
 	}
+	
 }

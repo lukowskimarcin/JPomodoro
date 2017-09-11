@@ -8,7 +8,7 @@ import fxbase.AbstractView;
 import fxbase.FXMLView;
 import javafx.application.Platform;
 import javafx.scene.layout.BorderPane;
-import model.Settings;
+import models.Settings;
 import services.SettingsService;
 import utils.DialogsUtil;
 
