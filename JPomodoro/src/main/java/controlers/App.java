@@ -6,9 +6,11 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import fxbase.AbstractJavaFxApplication;
 import javafx.scene.image.Image;
@@ -16,8 +18,10 @@ import javafx.scene.image.Image;
  
 
 @Lazy
-@ComponentScan(basePackages= {"controlers", "services"})
-@SpringApplicationConfiguration
+@ComponentScan(basePackages= { "controlers", "services"  })
+@EnableJpaRepositories(basePackages={"repositories"})
+@EntityScan(basePackages={"models"})
+@SpringBootApplication
 public class App extends AbstractJavaFxApplication {
 	
 	protected static final Logger log = Logger.getLogger(App.class.getName());   

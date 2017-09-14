@@ -1,5 +1,7 @@
 package controlers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
@@ -11,7 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import models.Settings;
+import models.Task;
 import services.SettingsService;
+import services.TaskService;
 import utils.DialogsUtil; 
 
 @Scope("prototype")
@@ -26,6 +30,8 @@ public class SettingsBean extends AbstractModelView<Settings>{
 	
 	@Autowired
 	private SettingsService settingsService;
+	
+	 @Autowired 	private TaskService taskService;
 	 
 	
 	@Override
@@ -46,21 +52,22 @@ public class SettingsBean extends AbstractModelView<Settings>{
     
     @FXML
     void onSave(ActionEvent event) {
+    	
+    	Task t =  new Task();
+    	t.setName("nazwa");
+    	t.setDescription("opis");
+    //	t.setPomodors(4);
+    	
+    	taskService.save(t);
+    	List<Task> list = taskService.findAll();
+    	
+    	System.out.println("Task list: " + list.size());
+    	for(Task tt : list) {
+    		System.out.println("-> " + tt);	
+    	}
+    	
+    	
     	try {
-//    		Settings s = new Settings();
-//    		s.setPomodoroLength(25);
-//    		s.setLongBreakLength(15);
-//    		s.setShortBreakLength(5);
-//    		
-//    		s.setAlarm("Buzzer.mp3");
-//    		
-//    		List<String> sounds = new ArrayList<>();
-//    		sounds.add("Buzzer.mp3");
-//    		sounds.add("LoudAlarmClockBuzzer.mp3");
-//    		sounds.add("TempleBellBigger.mp3");
-//    		s.setSounds(sounds);
-//    		
-    		
     		settingsService.save(getData());
     	}catch (Exception ex) {
 			DialogsUtil.create().showException(ex);
