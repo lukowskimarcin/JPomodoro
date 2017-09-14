@@ -30,7 +30,7 @@ public class MenuBean extends AbstractView {
 	private SettingsBean settingsBean;
 	
 	@Autowired
-	private TaskListBean taskListBean;
+	private TasksBean taskListBean;
 	
 	@Autowired
 	private SettingsService settingsService;

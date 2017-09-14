@@ -5,28 +5,40 @@ import javax.persistence.Entity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import fxbase.Dto;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tasks")
-public class Task {
-
+public class Task extends Dto {
+	private static final long serialVersionUID = 1L;
 	private LongProperty id;
-	private StringProperty name;
-	private StringProperty description;
-	private SimpleObjectProperty<Integer> pomodors;
+	private StringProperty name;										//nazwa 
+	private StringProperty description;									//opis
+	private SimpleObjectProperty<Integer> estimatedPomodors;			//przewidywane pomidory	
+	private SimpleObjectProperty<Integer> usedPomodoro;					//zużyte pomidory
+	private SimpleObjectProperty<Date> date;							//data zadania
+	private BooleanProperty complete;									//wykonane zadanie
+	
 
 	public Task() {
 		id = new SimpleLongProperty();
 		name = new SimpleStringProperty();
 		description = new SimpleStringProperty();
-		pomodors = new SimpleObjectProperty<Integer>();
+		estimatedPomodors = new SimpleObjectProperty<Integer>();
+		usedPomodoro = new SimpleObjectProperty<Integer>();
+		date = new SimpleObjectProperty<Date>(new Date());
+		complete = new SimpleBooleanProperty();
 	}
 
 	@Id
@@ -58,12 +70,39 @@ public class Task {
 	}
 
 	@Column
-	public final  Integer getPomodors() {
-		return pomodors.get();
+	public final  Integer getEstimatedPomodors() {
+		return estimatedPomodors.get();
 	}
 
-	public final  void setPomodors(Integer pomodors) {
-		this.pomodors.set(pomodors);
+	public final  void setEstimatedPomodors(Integer pomodors) {
+		this.estimatedPomodors.set(pomodors);
+	}
+	
+	@Column
+	public final  Integer getUsedPomodoro() {
+		return usedPomodoro.get();
+	}
+
+	public final  void setUsedPomodoro(Integer pomodors) {
+		this.usedPomodoro.set(pomodors);
+	}
+	
+	@Column
+	public final  Date getDate() {
+		return date.get();
+	}
+
+	public final  void setDate(Date date) {
+		this.date.set(date);
+	}
+	
+	@Column
+	public final  Boolean getComplete() {
+		return complete.get();
+	}
+
+	public final  void setComplete(Boolean complete) {
+		this.complete.set(complete);
 	}
 
 	public LongProperty idProperty() {
@@ -78,8 +117,20 @@ public class Task {
 		return description;
 	}
 
-	public SimpleObjectProperty<Integer> pomodorsProperty() {
-		return pomodors;
+	public SimpleObjectProperty<Integer> estimatedPomodorsProperty() {
+		return estimatedPomodors;
+	}
+	
+	public SimpleObjectProperty<Integer> usedPomodoroProperty() {
+		return usedPomodoro;
+	}
+	
+	public SimpleObjectProperty<Date> dateProperty() {
+		return date;
+	}
+	
+	public BooleanProperty descriptionComplete() {
+		return complete;
 	}
 
 	public String toString() {

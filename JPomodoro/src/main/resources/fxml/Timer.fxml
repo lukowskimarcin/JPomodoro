@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane minHeight="180.0" prefHeight="188.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.TasksBean">
+<AnchorPane minHeight="180.0" prefHeight="188.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.TimerBean">
    <children>
       <Label layoutX="40.0" layoutY="28.0" text="Lista zadań" />
    </children>
