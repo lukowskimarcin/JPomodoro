@@ -14,7 +14,7 @@ import models.Settings;
 public class SettingsService {
 
 	public Settings load() throws Exception {
-		File file = new File("settings.xml");
+		File file = new File("src/main/resources/settings.xml");
 		JAXBContext context = JAXBContext.newInstance(Settings.class);
 		Unmarshaller um = context.createUnmarshaller();
 		Settings settings = (Settings)um.unmarshal(file);
@@ -23,7 +23,7 @@ public class SettingsService {
 	}
 
 	public void save(Settings settings) throws Exception {
-		File result = new File("settings.xml");
+		File result = new File("src/main/resources/settings.xml");
 		JAXBContext context = JAXBContext.newInstance(Settings.class);
         Marshaller m = context.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

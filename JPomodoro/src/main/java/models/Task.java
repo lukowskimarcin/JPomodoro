@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -33,38 +31,38 @@ public class Task {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
+	public final  Long getId() {
 		return id.get();
 	}
 
-	public void setId(Long id) {
+	public final  void setId(Long id) {
 		this.id.set(id);
 	}
 
 	@Column
-	public String getName() {
+	public final String getName() {
 		return name.get();
 	}
 
-	public void setName(String name) {
+	public final  void setName(String name) {
 		this.name.set(name);
 	}
 
 	@Column
-	public String getDescription() {
+	public final  String getDescription() {
 		return description.get();
 	}
 
-	public void setDescription(String description) {
+	public final  void setDescription(String description) {
 		this.description.set(description);
 	}
 
 	@Column
-	public Integer getPomodors() {
+	public final  Integer getPomodors() {
 		return pomodors.get();
 	}
 
-	public void setPomodors(Integer pomodors) {
+	public final  void setPomodors(Integer pomodors) {
 		this.pomodors.set(pomodors);
 	}
 
