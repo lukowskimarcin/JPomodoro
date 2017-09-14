@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -30,7 +30,7 @@ public class App extends AbstractJavaFxApplication {
 		loadIcons();
 		addDefaultCSS("/css/app.css");
 		setStartInTray(false);
-		launchApp(App.class, MainBean.class, args);
+		launchApp(App.class, MainBean.class, args);  
 	}
 	 
 	private static void loadIcons() {
