@@ -10,6 +10,10 @@ import fxbase.FXMLView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import models.Settings;
@@ -22,57 +26,64 @@ import utils.DialogsUtil;
 @FXMLView(fxml="/fxml/Settings.fxml", bundle="/bundle/messages")
 public class SettingsBean extends AbstractModelView<Settings>{
 	
-	@FXML
-    private Button bPlay;
-	
-	@FXML
-    private Button bSave;
 	
 	@Autowired
 	private SettingsService settingsService;
 	
-	 @Autowired 	private TaskService taskService;
 	 
-	
-	@Override
+    @FXML
+    private Slider sliderPomodoroLength;
+
+    @FXML
+    private Label labelPomodoroLenght;
+
+    @FXML
+    private Label labelLongBreak;
+
+    @FXML
+    private Label labelShortBreak;
+
+    @FXML
+    private Slider sliderLongBreak;
+
+    @FXML
+    private Slider sliderShortBreak;
+
+    @FXML
+    private CheckBox checkBoxSound;
+
+    @FXML
+    private ChoiceBox<?> listSounds;
+
+    @FXML
+    private Button btnSave;
+
+    @FXML
+    private Button btnCancel;
+
+    @Override
 	public void bindToView(Settings settings) {
 	}
 	
 	@Override
 	public void unBindToView() {
 	}
-	
-
-    @FXML
-    void onPlay(ActionEvent event) {
-    	Media sound = new Media(getData().getAlarmPath());
-    	MediaPlayer mediaPlayer = new MediaPlayer(sound);
-    	mediaPlayer.play();
-    }
+    
     
     @FXML
-    void onSave(ActionEvent event) {
-    	
-    	Task t =  new Task();
-    	t.setName("nazwa");
-    	t.setDescription("opis");
-    //	t.setPomodors(4);
-    	
-    	taskService.save(t);
-    	List<Task> list = taskService.findAll();
-    	
-    	System.out.println("Task list: " + list.size());
-    	for(Task tt : list) {
-    		System.out.println("-> " + tt);	
-    	}
-    	
-    	
-    	try {
-    		settingsService.save(getData());
-    	}catch (Exception ex) {
-			DialogsUtil.create().showException(ex);
-		}
+    void onCancel(ActionEvent event) {
 
     }
+
+    @FXML
+    void onSave(ActionEvent event) {
+    	try {
+			applay();
+		} catch (Exception ex) {
+			DialogsUtil.create().showException(ex);
+		}
+    }
+
+
 	
 }
