@@ -62,7 +62,7 @@ public class MenuBean extends AbstractView {
 	void onSettings(ActionEvent event) {
 		try {
 			Settings settings = settingsService.load();
-			settingsBean.populate(settings); 
+			settingsBean.setData(settings); 
 			main.setSettings(settings);
 			main.setCenter(settingsBean);
 		} catch (Exception ex) {

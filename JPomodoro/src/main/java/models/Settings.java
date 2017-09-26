@@ -79,8 +79,8 @@ public class Settings extends Dto {
 		this.longBreakLength.set(longBreakLength);
 	}
 
-	public IntegerProperty soundProperty() {
-		return longBreakLength;
+	public BooleanProperty soundProperty() {
+		return sound;
 	}
 
 	public Boolean getSound() {
@@ -103,9 +103,6 @@ public class Settings extends Dto {
 		this.alarm.set(alarm);
 	}
 
-	public StringProperty alarmsProperty() {
-		return alarm;
-	}
 
 	@XmlElementWrapper(name = "sounds")
 	@XmlElement(name = "sound", type = String.class)
@@ -149,10 +146,16 @@ public class Settings extends Dto {
 			copy.setShortBreakLength(getShortBreakLength());
 		}
 
+		if (getPomodoroLength() != null) {
+			copy.setPomodoroLength(getPomodoroLength());
+		}
+
+		
 		if (getSound() != null) {
 			copy.setSound(getSound());
 		}
 
+		System.out.println("copy: " + copy);
 		return copy;
 	}
 	
