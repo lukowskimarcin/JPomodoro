@@ -37,13 +37,13 @@ public class TestSettings {
 	public void testCopyEquals() throws CloneNotSupportedException {
 		 Settings sCopy = (Settings) s.clone();
 		 assertEquals(s.getAlarm(), sCopy.getAlarm());
-		 
 		 assertNotSame(s, sCopy);
 	}
 	
 	@Test
 	public void testCopyChangeAlarm() throws CloneNotSupportedException {
 		 Settings sCopy = (Settings) s.clone();
+		 assertEquals(s.getAlarm(), sCopy.getAlarm());
 		 sCopy.setAlarm("alarmCopy");
 		 assertNotEquals(s.getAlarm(), sCopy.getAlarm());
 	}
@@ -57,9 +57,38 @@ public class TestSettings {
 		
 		sCopy.getSounds().remove(1);
 		sCopy.getSounds().set(0, "test");
-	
 		assertNotEquals(sCopy.getSounds(), s.getSounds());
 		
+	}
+	
+	@Test
+	public void testCopyPomodoroLength() throws CloneNotSupportedException {
+		Settings sCopy = (Settings) s.clone();
+		assertNotEquals(s, sCopy);
+		assertEquals(sCopy.getPomodoroLength(), s.getPomodoroLength());
+		
+		sCopy.setPomodoroLength(0);
+		assertNotEquals(sCopy.getPomodoroLength(), s.getPomodoroLength());
+	}
+	
+	@Test
+	public void testCopyShortBreakLength() throws CloneNotSupportedException {
+		Settings sCopy = (Settings) s.clone();
+		assertNotEquals(s, sCopy);
+		assertEquals(sCopy.getShortBreakLength(), s.getShortBreakLength());
+		
+		sCopy.setShortBreakLength(0);
+		assertNotEquals(sCopy.getShortBreakLength(), s.getShortBreakLength());
+	}
+	
+	@Test
+	public void testCopyLongBreakLength() throws CloneNotSupportedException {
+		Settings sCopy = (Settings) s.clone();
+		assertNotEquals(s, sCopy);
+		assertEquals(sCopy.getLongBreakLength(), s.getLongBreakLength());
+		
+		sCopy.setLongBreakLength(0);
+		assertNotEquals(sCopy.getLongBreakLength(), s.getLongBreakLength());
 	}
 
 }
